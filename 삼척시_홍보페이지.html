@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>삼척시 홍보 웹페이지</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans KR", Arial, sans-serif;
+      background: #f4f7fb;
+      color: #222;
+    }
+
+    header {
+      height: 100vh;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+        url("https://www.gangwon.to/upload/board/BDMAIN03/eedc6a60-fb8d-41a9-987e-17ab6cc22af5.jpg");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 60px;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(6px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .menu {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .menu button {
+      border: none;
+      background: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 8px 4px;
+    }
+
+    .menu button:hover {
+      color: #ffd166;
+    }
+
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .hero h1 {
+      font-size: 45px;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 22px;
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 30px auto 80px;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 28px;
+    }
+
+    aside {
+      background: white;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      height: fit-content;
+    }
+
+    aside h2 {
+      font-size: 22px;
+text-align: center;
+      margin-bottom: 18px;
+      color: #0064cd;
+    }
+
+    .side-menu {
+      list-style: none;
+    }
+
+    .side-menu li {
+      margin-bottom: 10px;
+    }
+
+    .side-menu button {
+      width: 100%;
+      border: none;
+      background: #e3f1ff;
+      color: #222;
+      padding: 12px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    .side-menu button:hover,
+    .side-menu button.active {
+      background: #0064cd;
+      color: white;
+      transform: translateX(4px);
+    }
+
+    .content {
+      background: white;
+      border-radius: 22px;
+      padding: 36px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      min-height: 520px;
+    }
+
+    .content h2 {
+      font-size: 34px;
+      margin-bottom: 18px;
+      color: #0064cd;
+    }
+
+    .content p {
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: #e3f1ff;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #dde7ec;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+
+    .card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+    }
+
+    .card div {
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      color: #013f80;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #ffd166;
+      color: #222;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .timeline {
+      margin-top: 20px;
+      border-left: 4px solid #013f80;
+      padding-left: 20px;
+    }
+
+    .timeline article {
+      margin-bottom: 20px;
+      background: #e3f1ff;
+      padding: 18px;
+      border-radius: 14px;
+    }
+
+    footer {
+      background: #013f80;
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+
+    @media (max-width: 850px) {
+      nav {
+        padding: 18px 24px;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      main {
+        margin-top: -40px;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+ul {
+  margin: 10;
+  padding: 10;
+
+}
+
+ul li {
+  margin-top: 10px;  /* 위쪽 여백 */
+  margin-bottom: 10px; /* 아래쪽 여백 */
+ margin-left: 30px; /* 아래쪽 여백 */
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo" onclick="showPage('home')"><img src="https://www.samcheok.go.kr/_res/portal/img/inc/logo.png"></div>
+      <ul class="menu">
+        <li><button onclick="showPage('intro')">삼척소개</button></li>
+        <li><button onclick="showPage('tour')">관광</button></li>
+        <li><button onclick="showPage('festival')">축제·행사</button></li>
+        <li><button onclick="showPage('character')">캐릭터 소개</button></li>
+        <li><button onclick="showPage('team')">조 관련 페이지</button></li>
+      </ul>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <h1>푸른 바다와 함께하는 힐링도시 삼척</h1>
+           </div>
+    </section>
+  </header>
+
+  <main>
+    <div class="layout">
+      <aside>
+        <h2>HOME</h2>
+        <ul class="side-menu">
+          <li><button onclick="showPage('home')" class="active">홈</button></li>
+          <li><button onclick="showPage('intro')">삼척소개 / 도시개요</button></li>
+          <li><button onclick="showPage('nature')">관광 - 자연</button></li>
+          <li><button onclick="showPage('beach')">관광 - 해양</button></li>
+          <li><button onclick="showPage('culture')">관광 - 문화유산</button></li>
+          <li><button onclick="showPage('course')">관광 - 여행코스</button></li>
+          <li><button onclick="showPage('festival')">축제·행사</button></li>
+          <li><button onclick="showPage('character')">캐릭터 소개</button></li>
+          <li><button onclick="showPage('team')">조 관련 페이지</button></li>
+        </ul>
+      </aside>
+
+      <section class="content" id="content"></section>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 삼척시 홍보 웹페이지 | 캐릭터상품디자인 기말고사 프로젝트</p>
+  </footer>
+
+  <script>
+    const pages = {
+      home: {
+        title: "삼척시 홍보 홈페이지",
+        html: `
+          <span class="tag">WELCOME TO SAMCHEOK</span>
+          <h2>삼척, 자연과 문화가 살아있는 도시</h2>
+          <p>
+            삼척시는 동해안의 아름다운 바다와 산, 동굴, 문화유산이 조화를 이루는 관광도시입니다.
+            이 웹페이지는 삼척시의 매력을 소개하고, 관광지와 축제, 여행코스, 캐릭터 정보를 한눈에 볼 수 있도록 제작되었습니다.
+          </p>
+          <div class="cards">
+            <div class="card">
+              <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcS6NBG6D7_BFt-oGE-ZQwkCQbTZ-JTMWsZ4bz5TpPjRoLVSw8HLjNc_VUhp7KIvbL2ZUgodI3fA-fMLbk2Wvm0hreg&s=19" alt="자연">
+              <div>
+                <h3>아름다운 자연</h3>
+                <p>산과 바다, 동굴이 함께하는 자연 관광지</p>
+              </div>
+            </div>
+            <div class="card">
+              <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGrH-kloU6MUvcszKjjSPCGTiGk1O4GJcWrrBehXXSrS-LmAEfE0U1S-RNI3hRvAkDJZOio-gg5jccjPbsqQR-cIr5t_xJ-s4JUhUKgXbAWR4cckZUXJakbDTPkHRWPJXBkkDRhcg=w675-h390-n-k-no" alt="해양">
+              <div>
+                <h3>푸른 동해</h3>
+                <p>해수욕장과 해양 레저를 즐길 수 있는 도시</p>
+              </div>
+            </div>
+            <div class="card">
+              <img src="https://www.jeonmae.co.kr/news/photo/202312/1003889_696792_2054.jpg" alt="문화">
+              <div>
+                <h3>문화와 역사</h3>
+                <p>전통과 이야기가 살아있는 문화 관광</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+
+      intro: {
+        title: "삼척소개 / 도시개요",
+        html: `
+          <h2>삼척소개 / 도시개요</h2>
+          <p>
+   삼척은 강원특별자치도를 대표하는 해양관광도시로, 맑고 푸른 바다와 웅장한 자연경관이 어우러진 매력적인 도시입니다. 넓고 깨끗한 백사장을 자랑하는 삼척해변과 맹방해변은 사계절 아름다운 풍경을 선사하며, 동해의 일출을 감상할 수 있는 최고의 명소로 많은 사랑을 받고 있습니다.
+<P>
+또한 동양 최대 규모의 석회암 동굴인 환선굴과 신비로운 대이리 동굴지대는 삼척만의 특별한 자연유산을 보여주며, 해안 절벽과 푸른 바다가 어우러진 초곡용굴촛대바위길과 덕봉산해안생태탐방로는 방문객들에게 잊지 못할 감동을 선사합니다. 해안을 따라 펼쳐지는 아름다운 풍경과 다양한 체험시설은 남녀노소 누구나 즐길 수 있는 특별한 여행 경험을 제공합니다.
+</P>
+<P>
+자연과 문화, 역사 그리고 관광이 조화를 이루는 삼척은 풍부한 해양자원과 다양한 축제, 지역 문화를 통해 활기찬 도시의 매력을 보여주고 있습니다. 아름다운 동해바다와 신비로운 자연, 그리고 따뜻한 사람들의 이야기가 살아있는 삼척에서 특별한 추억을 만들어 보세요.
+</P>
+<P>
+대한민국 최고의 해양·관광도시 삼척이 여러분을 기다립니다.
+   </P>       </p>
+          <p>
+            대표적인 관광지는 <strong>해수욕장, 환선굴, 대금굴, 해양레일바이크,</strong> 등입니다.
+          </p>
+        `
+      },
+
+      tour: {
+        title: "관광",
+        html: `
+          <h2>삼척 관광</h2>
+          <p>삼척 관광은 자연, 해양, 문화유산, 여행코스로 나누어 볼 수 있습니다.</p>
+          <div class="cards">
+            <div class="card" onclick="showPage('nature')">
+              <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80" alt="자연">
+              <div><h3>자연</h3><p>동굴, 산, 계곡 중심 관광</p></div>
+            </div>
+            <div class="card" onclick="showPage('beach')">
+              <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=900&q=80" alt="해양">
+              <div><h3>해양</h3><p>해변과 바다 체험</p></div>
+            </div>
+            <div class="card" onclick="showPage('course')">
+              <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80" alt="여행코스">
+              <div><h3>여행코스</h3><p>하루 코스와 가족 여행</p></div>
+            </div>
+          </div>
+        `
+      },
+
+      nature: {
+        title: "관광 - 자연",
+        html: `
+          <h2>관광 - 자연</h2>
+          <p>
+                       삼척의 대표 자연 관광지 세 곳을 소개합니다.
+          </p>
+          <div class="cards">
+            <div class="card">
+              <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNjAzMDVfMjE0%2FMDAxNzcyNjY1OTcwNzUy.0mOSEKeOZO-fK1deWePKOXfD8c3taPycUUh_xhgWTiYg.mR26nLTzJKCKfWgxMkolzym3FMqSngg0fpKLK2uUAHMg.PNG%2Fimage.png&type=sc960_832
+" alt="동굴">
+              <div><h3>환선굴</h3><p>웅장한 규모와 신비로운 동굴 경관을 자랑하는 자연 명소</p></div>
+            </div>
+
+            <div class="card">
+              <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA3MjVfMTEx%2FMDAxNzUzNDMyNTg0MTIy.RuQE0YTdW8WjMc2UXHnH-vvRU0Kkts5FZhwPsThKv2Ig.522JqjCwJXgJr0K-ukTHoNCtNZncCgnibdynliGf67Mg.JPEG%2F900%25A3%25DF1753432583500.jpg&type=sc960_832
+
+" alt="계곡">
+              <div><h3>삼척해변</h3><p>넓은 백사장과 아름다운 동해를 즐길 수 있는 대표 해변
+</p></div>
+            </div>
+
+<div class="card">
+              <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNjA0MjNfMjQ3%2FMDAxNzc2OTA4NzI5Mjkz.L48OIH_3lk_epTNgMPZE_7nWz-tzhgT2zc6JsBZxIX8g.1Y8-fbtlnne8Z02FrTcj1B80NJsyFxGZJF4aYt1UlMog.JPEG%2FType1_%25C3%25CA%25B0%25EE_%25BF%25EB%25B1%25BC_%25C3%25D0%25B4%25EB%25B9%25D9%25C0%25A7%25B1%25E6_%25B0%25AD%25BF%25F8%25C1%25F6%25BB%25E7_%25B8%25F0%25B8%25D5%25C6%25AE%25BD%25BA%25C6%25A9%25B5%25F0%25BF%25C0_B6ATha.jpg&type=sc960_832
+" alt="동굴">
+              <div><h3>초곡 용굴 촛대바위길
+</h3><p>푸른 동해와 기암괴석이 어우러진 아름다운 해안 산책 명소</p></div>
+            </div>
+
+          </div>
+        `
+      },
+
+      beach: {
+        title: "관광 - 해양",
+        html: `
+          <h2>관광 - 해양</h2>
+          <p>
+            깨끗한 바다와 천혜의 자연환경을 자랑하는 삼척의 해양 관광지는 방문객들에게 특별한 휴식과 추억을 선사합니다.
+          </p>
+          <div class="cards">
+            <div class="card">
+              <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA4MDdfMjAw%2FMDAxNzU0NTM1Nzc1NjE1.x9dMLw18wIiBy7BbszDe60FXZ5n4On5GW5o6x9skD-cg.aMHfFbn_mX8qLxQeXqqoRs8HSzMZK33vLPO3TbAruPEg.PNG%2Fafew.png&type=sc960_832
+" alt="장호항">
+              <div><h3>장호항</h3><p>맑고 투명한 바다를 자랑하는 해양 레저 명소</p></div>
+            </div>
+            <div class="card">
+              <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA4MDlfMTc1%2FMDAxNzU0NzI3MzEwMDY0.7OUYowVIDyK65gYNDt-dOEmbuqMGnDlkdAILiYATI8Yg.xH4gRcFSAth4R1L-YWoC7TM1_hiE1Jc2jp8FNRhXqF4g.JPEG%2F900%25A3%25DF20250801%25A3%25DF171556.jpg&type=sc960_832" alt="바다">
+              <div><h3>맹방해변</h3><p>아름다운 해안 풍경과 넓은 백사장이 펼쳐진 명소</p></div>
+            </div>
+
+ <div class="card">
+              <img src="https://www.samcheokcablecar.kr/bbsDown/photo/2024032533461003931_s.jpg" alt="장호항">
+              <div><h3>삼척 해상 케이블카</h3><p>삼척 해상 케이블카를 타고 천혜의 자연절경과 청정해변을 구경할 수 있는 명소</p></div>
+            </div>
+          </div>
+        `
+      },
+
+      culture: {
+        title: "관광 - 문화유산",
+        html: `
+          <h2>관광 - 문화유산</h2>
+          <p>
+           삼척은 유구한 역사·문화유산과 수려한 자연환경이 조화를 이루는 대표적인 관광도시입니다. 도시 곳곳에는 오랜 세월을 간직한 문화유산과 아름다운 자연 명소가 살아 숨 쉬고 있습니다.
+<P>
+ <ul>
+           <li>죽서루</li>
+           <li>삼척향교</li>
+           <li>성내동 성당</li>
+           <li>공양왕릉</li>
+   </ul>
+</P>
+<P>
+삼척은 이처럼 풍부한 역사·문화유산과 천혜의 자연환경을 바탕으로 방문객들에게 다채로운 볼거리와 잊지 못할 추억을 선사하는 매력적인 관광도시입니다.
+</P>
+          </p>
+        `
+      },
+
+      course: {
+        title: "관광 - 여행코스",
+        html: `
+          <h2>관광 - 계절별 여행코스</h2>
+          <div class="timeline">
+            <article>
+              <h3>봄 여행</h3>
+              <p>맹방벚꽃길 (4km, 8분) → 소한계곡민물김생태관광지 (25km, 25분) → 수로부인헌화공원 (28km, 30분) → 장미공원</p>
+            </article>
+            <article>
+              <h3>여름 여행</h3>
+              <p>삼척해변 (1km, 4분) → 이사부사자공원 물썰매장 (59km, 60분) → 가곡유황온천&스파 (23km, 28분) → 미인폭포</p>
+            </article>
+            <article>
+              <h3>가을 여행</h3>
+              <p>덕풍계곡 (42km, 50분) → 초곡용굴촛대바위길 (20km, 25분) → 죽서루 (3km, 10분) → 벽너머엔나릿골감성마을</p>
+            </article>
+    <article>
+              <h3>겨울 여행</h3>
+              <p>환선굴/대금굴 (20km, 25분) → 강원종합박물관 (42km, 50분) → 해상케이블카</p>
+            </article>
+          </div>
+        `
+      },
+
+      festival: {
+        title: "축제·행사",
+        html: `
+          <h2>축제·행사</h2>
+          <p>
+            삼척에서는 계절마다 다양한 축제와 행사가 열립니다. </p>
+          <div class="cards">
+            <div class="card">
+              <img src="https://img2.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202603/11/yonhap/20260311094947689jxdj.jpg" alt="장미축제">
+              <div><h3>맹방 유채꽃 축제</h3><p>매년 봄 삼척시 근덕면 상맹방리 일원에서 노란 유채꽃밭과 벚나무 가로수가 어우러져 아름다운 봄의 정취를 만끽할 수 있는 축제</p></div>
+            </div>
+
+            <div class="card">
+              <img src="https://www.jeonmae.co.kr/news/photo/202305/957138_648276_2957.png" alt="축제">
+              <div><h3>장미축제</h3><p>오십천변을 따라 조성된 공원에는 수백만 송이의 장미가 만개하여 화려한 장관을 보여주는 축제</p></div>
+            </div>
+
+ <div class="card">
+              <img src="http://www.atlasnews.co.kr/news/photo/202212/5952_17132_4617.jpg
+" alt="장미축제">
+              <div><h3>이사부축제</h3><p>신라 장군 이사부의 해양 개척 정신과 업적을 기리기 위해 개최되는 삼척의 대표 역사문화축제</p></div>
+            </div>
+          </div>
+        `
+      },
+
+      character: {
+        title: "캐릭터 소개",
+        html: `
+          <h2>캐릭터 소개</h2>
+          <p>
+           삼척시의 캐릭터들은 바다, 안전, 환경을 주제로 제작된 마스코트입니다. 삼척의 아름다운 자연과 안전한 도시, 깨끗한 환경의 가치를 친근하게 전달하며 시민과 관광객들에게 다양한 정보를 알리는 역할을 하고 있습니다.
+          </p>
+          <div class="cards">
+            <div class="card">
+              <img src="카드파도리.png" alt="캐릭터">
+              <div>
+                <h3>파도리</h3>
+                <p>삼척의 바다를 상징하는 밝고 활발한 대표 캐릭터</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <img src="카드메디.png" alt="캐릭터">
+              <div>
+                <h3>메디</h3>
+                <p>시민과 관광객의 안전을 지키는 안전지킴이 캐릭터</p>
+              </div>
+            </div>
+
+<div class="card">
+              <img src="카드초롱이.png" alt="캐릭터">
+              <div>
+                <h3>초롱이</h3>
+                <p>깨끗한 자연환경을 지키는 환경지킴이 캐릭터</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+
+      team: {
+        title: "조 관련 페이지",
+        html: `
+          <h2>조 관련 페이지</h2>
+          <p>
+            이 페이지는 기말발표 자료로 활용할 수 있는 공간입니다.
+            팀원 소개, 역할 분담, 제작 과정, 설문 결과, 디자인 성과, 프로젝트 후기 등을 넣을 수 있습니다.
+          </p>
+          <div class="timeline">
+            <article>
+              <h3>팀원 역할</h3>
+              <p>기획, 디자인, HTML/CSS/JavaScript 구현, 발표 자료 제작</p>
+            </article>
+            <article>
+              <h3>작업 과정</h3>
+              <p>자료 조사 → 페이지 구조 설계 → 디자인 제작 → 기능 구현 → 최종 발표</p>
+            </article>
+            <article>
+              <h3>프로젝트 후기</h3>
+              <p>삼척시의 관광 자원을 조사하며 지역 홍보 웹페이지의 중요성을 이해했습니다.</p>
+            </article>
+          </div>
+        `
+      }
+    };
+
+    const content = document.getElementById("content");
+    const buttons = document.querySelectorAll(".side-menu button");
+
+    function showPage(pageName) {
+      const page = pages[pageName] || pages.home;
+      content.innerHTML = page.html;
+
+      buttons.forEach(button => {
+        button.classList.remove("active");
+
+        const buttonText = button.textContent;
+        const pageTitle = page.title;
+
+        if (
+          buttonText.includes(pageTitle) ||
+          pageTitle.includes(buttonText.replace("HOME", "").trim()) ||
+          (pageName === "home" && buttonText === "홈")
+        ) {
+          button.classList.add("active");
+        }
+      });
+
+      window.scrollTo({
+        top: document.querySelector("main").offsetTop - 30,
+        behavior: "smooth"
+      });
+    }
+
+    showPage("home");
+  </script>
+</body>
+</html>
